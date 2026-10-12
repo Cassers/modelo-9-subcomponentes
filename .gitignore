@@ -1,0 +1,11 @@
+*.db
+*.db-*
+*.sqlite*
+*.sql
+*.py
+*.docx
+*.txt
+.env*
+clave*
+password*
+__pycache__/
