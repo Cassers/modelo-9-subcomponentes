@@ -1,6 +1,6 @@
 # Modelo de nueve subcomponentes — paquete protegido
 
-Paquete versión 2.6 actualizado el 13 de octubre de 2026. Incluye el Word corregido del modelo y el registro detallado de cambios, junto con el Python y las instrucciones de ejecución. El registro distingue los cambios aplicados, las decisiones posteriores y los ajustes técnicos pendientes.
+Paquete versión 2.7 actualizado el 13 de octubre de 2026. Incluye el Word corregido del modelo y el registro detallado de cambios, junto con el Python y las instrucciones de ejecución. El registro distingue los cambios aplicados, las decisiones posteriores y los ajustes técnicos pendientes.
 
 ## Contenido del paquete
 
@@ -9,7 +9,7 @@ Paquete versión 2.6 actualizado el 13 de octubre de 2026. Incluye el Word corre
 - `aplicar_modelo.py`: script para aplicar el modelo sobre una base SQLite local.
 - `LEEME.txt`: instrucciones de ejecución.
 
-Esta actualización sincroniza el Python, el Word y el registro de cambios. La versión 2.6 retira el cálculo del porcentaje desde importes: CtaInic solo distingue cero de positivo y el rango registrado determina los puntos. Conserva la recuperación de segmentos inequívocos, la identificación de puntajes estimados y las 24 columnas derivadas. Supera 56 pruebas vigentes. Los pendientes de otros componentes siguen identificados en los documentos.
+Esta actualización sincroniza el Python, el Word y el registro de cambios. La versión 2.7 utiliza PorcCtaInic como porcentaje exacto registrado (0,4987 equivale a 49,87 %). Cuando falta ese dato, utiliza RPorcCtaInic como respaldo. CtaInic solo distingue cero de positivo; no se reconstruye el porcentaje desde importes. Las discrepancias con el rango quedan señaladas en el motivo, con prioridad para el porcentaje exacto válido. Conserva la recuperación de segmentos inequívocos, la identificación de puntajes estimados y las 24 columnas derivadas. Supera 65 pruebas vigentes. Los pendientes de otros componentes siguen identificados en los documentos.
 
 ## Descargar y abrir
 
