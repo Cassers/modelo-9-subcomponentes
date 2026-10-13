@@ -1,6 +1,6 @@
 # Modelo de nueve subcomponentes — paquete protegido
 
-Paquete actualizado el 13 de octubre de 2026. Incluye el Word corregido del modelo y el registro detallado de cambios, junto con el Python y las instrucciones de ejecución. El registro distingue los cambios aplicados, las decisiones posteriores y los ajustes técnicos pendientes.
+Paquete versión 2.3 actualizado el 13 de octubre de 2026. Incluye el Word corregido del modelo y el registro detallado de cambios, junto con el Python y las instrucciones de ejecución. El registro distingue los cambios aplicados, las decisiones posteriores y los ajustes técnicos pendientes.
 
 ## Contenido del paquete
 
@@ -9,7 +9,7 @@ Paquete actualizado el 13 de octubre de 2026. Incluye el Word corregido del mode
 - `aplicar_modelo.py`: script para aplicar el modelo sobre una base SQLite local.
 - `LEEME.txt`: instrucciones de ejecución.
 
-Esta actualización incorpora el registro de cambios. El Word del modelo y el Python conservan la versión previamente entregada; los pendientes descritos en el registro siguen identificados como tales.
+Esta actualización sincroniza el Python, el Word y el registro de cambios. Incorpora la recuperación de clasificaciones inequívocas y documenta cuándo el puntaje es estimado. Conserva las 24 columnas derivadas y supera 50 pruebas automatizadas. Los pendientes de otros componentes siguen identificados en los documentos.
 
 ## Descargar y abrir
 
