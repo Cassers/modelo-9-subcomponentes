@@ -1,6 +1,15 @@
 # Modelo de nueve subcomponentes — paquete protegido
 
-Paquete de la versión de trabajo del entregable. Contiene el script Python, el documento Word y las instrucciones de ejecución. Mantiene los ajustes técnicos pendientes identificados durante la revisión.
+Paquete actualizado el 13 de octubre de 2026. Incluye el Word corregido del modelo y el registro detallado de cambios, junto con el Python y las instrucciones de ejecución. El registro distingue los cambios aplicados, las decisiones posteriores y los ajustes técnicos pendientes.
+
+## Contenido del paquete
+
+- `Modelo_9_Subcomponentes_Entregable.docx`: documento del modelo con los ajustes de la entrega.
+- `Detalle_de_cambios_del_modelo.docx`: registro de cambios por componente y estado de los pendientes.
+- `aplicar_modelo.py`: script para aplicar el modelo sobre una base SQLite local.
+- `LEEME.txt`: instrucciones de ejecución.
+
+Esta actualización incorpora el registro de cambios. El Word del modelo y el Python conservan la versión previamente entregada; los pendientes descritos en el registro siguen identificados como tales.
 
 ## Descargar y abrir
 
