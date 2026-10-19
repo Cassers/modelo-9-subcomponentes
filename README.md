@@ -1,8 +1,10 @@
 # Modelo de nueve subcomponentes — paquete protegido
 
-Paquete versión 3.0 actualizado el 19 de octubre de 2026. Incluye el Python autocontenido, el documento del modelo, el registro de cambios y las instrucciones de ejecución.
+Paquete versión 3.1 actualizado el 19 de octubre de 2026. Incluye el Python autocontenido, el documento del modelo, el registro de cambios y las instrucciones de ejecución.
 
 ## Cambios de esta versión
+
+- Acepta entradas que ya contienen algunas o todas las columnas derivadas. Las recalcula desde las variables de negocio y deja una sola copia de cada una de las 26 salidas, con sus nombres canónicos. Un resultado NULL sustituye igualmente el valor anterior.
 
 - Permite repetir el proceso sobre la misma salida reconocida del modelo. Prepara el resultado completo, guarda un respaldo SQLite `.db.bak` y actualiza la tabla en una transacción. Un fallo conserva la salida anterior.
 - Añade `porcentaje_plazo_transcurrido` (REAL) y `segmento_plazo_transcurrido` (TEXT), después de las 24 derivadas anteriores: **26 en total**.
@@ -12,7 +14,7 @@ Paquete versión 3.0 actualizado el 19 de octubre de 2026. Incluye el Python aut
 
 El indicador mide tiempo contractual, no capital ni cuotas pagadas; «Plazo cumplido» no acredita cancelación, mora o prepago. Las fechas de desembolso admiten ISO o día/mes/año, sin inferir seriales de Excel.
 
-Supera **100 pruebas automatizadas**, incluidas 10.920 combinaciones de regresión de Riesgo, comparación de las 24 salidas anteriores, fronteras temporales, fin de mes y bisiestos, repetición del script, respaldo con WAL y rollback durante la actualización. La distribución final requiere ejecutar esta versión sobre la base original.
+Supera **109 pruebas automatizadas**, incluidas 10.920 combinaciones de regresión de Riesgo, entradas con 24 o 26 derivadas, columnas parciales y encabezados equivalentes, comparación de las salidas anteriores, fronteras temporales, fin de mes y bisiestos, repetición del script, respaldo con WAL y rollback durante la actualización. La distribución final requiere ejecutar esta versión sobre la base original.
 
 ## Contenido del paquete
 
@@ -30,6 +32,8 @@ Supera **100 pruebas automatizadas**, incluidas 10.920 combinaciones de regresi�
 
 Si existen varias bases o tablas compatibles, indicar `--db cartera.db --tabla-origen cartera`. Se puede elegir otra salida con `--salida resultado.db`.
 
-El origen se abre en modo de solo lectura. El programa omite créditos vacíos y conserva las columnas originales. No reemplaza bases ajenas ni usa un resultado segmentado como origen.
+Para procesar una entrada ya segmentada, usar `python aplicar_modelo.py --db base_ya_segmentada.db --salida resultado_actualizado.db`. La salida debe ser un archivo distinto de la entrada.
+
+El origen se abre en modo de solo lectura. El programa omite créditos vacíos y conserva las columnas originales. Admite resultados ya segmentados como entrada cuando conservan las variables de negocio necesarias. Recalcula únicamente las 26 derivadas conocidas; el resto de columnas se conserva. No reemplaza bases ajenas.
 
 La contraseña se entrega por separado. Este repositorio distribuye los fuentes y documentos dentro del ZIP cifrado y no contiene bases de datos. `SHA256SUMS` permite comprobar la integridad de la descarga.
