@@ -1,23 +1,29 @@
 # Modelo de nueve subcomponentes — paquete protegido
 
-Paquete versión 2.8 actualizado el 13 de octubre de 2026. Incluye el Word corregido del modelo y el registro detallado de cambios, junto con el Python y las instrucciones de ejecución. El registro distingue los cambios aplicados, las decisiones posteriores y los ajustes técnicos pendientes.
+Paquete versión 2.9 actualizado el 19 de octubre de 2026. Incluye el Python autocontenido, el documento del modelo, el registro de cambios y las instrucciones de ejecución.
+
+## Cambios de esta versión
+
+- El antiguo grupo favorable de Riesgo se divide por CIFIN 776 en «Cliente sólido con respaldo externo» y «Cliente favorable con respaldo externo limitado». Los otros cuatro perfiles y la prioridad de fuentes se conservan.
+- El antiguo «Práctico Funcional» de Vehículo se divide en «Práctico sedán/hatchback» y «Práctico SUV», usando la carrocería registrada y conservando las demás prioridades.
+- Protección mantiene sus categorías. Se conservan las reglas de cuota inicial de la versión 2.8, los pesos y las mismas 24 columnas derivadas.
+
+Supera 87 pruebas automatizadas, incluidas 10.920 combinaciones de regresión de Riesgo y ejecución SQLite del script independiente. La distribución final requiere ejecutar esta versión sobre la base original. Los documentos detallan los criterios y los pendientes de los demás componentes.
 
 ## Contenido del paquete
 
-- `Modelo_9_Subcomponentes_Entregable.docx`: documento del modelo con los ajustes de la entrega.
-- `Detalle_de_cambios_del_modelo.docx`: registro de cambios por componente y estado de los pendientes.
-- `aplicar_modelo.py`: script para aplicar el modelo sobre una base SQLite local.
+- `aplicar_modelo.py`: Python 3.10 o posterior, sin dependencias externas.
+- `Modelo_9_Subcomponentes_Entregable.docx`: reglas de aplicación vigentes.
+- `Detalle_de_cambios_del_modelo.docx`: historial y alcance de la actualización.
 - `LEEME.txt`: instrucciones de ejecución.
 
-Esta actualización sincroniza el Python, el Word y el registro de cambios. La versión 2.8 permite usar RPorcCtaInic como respaldo cuando importe y rango corroboran cero o positivo frente a un PorcCtaInic válido contradictorio. Importe cero con rango exclusivamente cero corresponde a Financiación total; importe positivo con rango que admite positivo permite puntuar por intervalos, excluyendo cero. La contradicción resuelta queda indicada en el motivo. Otros conflictos y datos inválidos siguen para revisión. No se reconstruye el porcentaje desde importes. Conserva los pesos, el máximo compatible estimado cuando el segmento es único y las 24 columnas derivadas. Supera 77 pruebas vigentes. La recuperación final requiere ejecutar la base original con esta versión; los pendientes de otros componentes siguen identificados en los documentos.
-
-## Descargar y abrir
+## Descargar y ejecutar
 
 1. [Descargar el ZIP protegido](https://github.com/Cassers/modelo-9-subcomponentes/raw/refs/heads/main/Modelo_9_Subcomponentes_protegido.zip).
-2. Abrirlo con una herramienta compatible con **ZIP AES-256**, como 7-Zip o WinRAR.
-3. Introducir la contraseña recibida por separado y extraer los archivos.
-4. Seguir las instrucciones de `LEEME.txt`.
+2. Extraerlo con una herramienta compatible con **ZIP AES-256**, como 7-Zip o WinRAR, y la contraseña recibida por separado.
+3. Colocar el script junto a la base SQLite original y ejecutar `python aplicar_modelo.py`.
+4. Si existe una salida anterior, usar un nombre nuevo, por ejemplo `python aplicar_modelo.py --db cartera.db --salida resultado_v29.db`.
 
-La contraseña se entrega por separado y no está publicada en GitHub. Este repositorio no contiene bases de datos. El script requiere Python 3.10 o posterior y procesa la base SQLite localmente.
+El origen se abre en modo de solo lectura y la salida conserva las columnas originales. El script omite créditos vacíos y no sobrescribe resultados existentes.
 
-El archivo `SHA256SUMS` permite comprobar la integridad de la descarga. Los archivos fuente y el documento se distribuyen dentro del ZIP cifrado.
+La contraseña se entrega por separado. Este repositorio distribuye los fuentes y documentos dentro del ZIP cifrado y no contiene bases de datos. `SHA256SUMS` permite comprobar la integridad de la descarga.
