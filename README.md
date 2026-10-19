@@ -1,20 +1,22 @@
 # Modelo de nueve subcomponentes — paquete protegido
 
-Paquete versión 3.1 actualizado el 19 de octubre de 2026. Incluye el Python autocontenido, el documento del modelo, el registro de cambios y las instrucciones de ejecución.
+Paquete versión 3.2 actualizado el 19 de octubre de 2026. Incluye el Python autocontenido, el documento del modelo, el registro de cambios y las instrucciones de ejecución.
 
 ## Cambios de esta versión
+
+- Limita el porcentaje de plazo transcurrido a **100 %** en SQLite. Los créditos que alcanzaron o superaron su vencimiento quedan en **100 — Plazo cumplido**. Al repetir la ejecución corrige también porcentajes anteriores superiores a 100.
 
 - Acepta entradas que ya contienen algunas o todas las columnas derivadas. Las recalcula desde las variables de negocio y deja una sola copia de cada una de las 26 salidas, con sus nombres canónicos. Un resultado NULL sustituye igualmente el valor anterior.
 
 - Permite repetir el proceso sobre la misma salida reconocida del modelo. Prepara el resultado completo, guarda un respaldo SQLite `.db.bak` y actualiza la tabla en una transacción. Un fallo conserva la salida anterior.
 - Añade `porcentaje_plazo_transcurrido` (REAL) y `segmento_plazo_transcurrido` (TEXT), después de las 24 derivadas anteriores: **26 en total**.
 - Usa el corte fijo **2026-08-09**, configurable mediante `--fecha-corte AAAA-MM-DD`. Calcula días reales transcurridos sobre días hasta el vencimiento teórico según el plazo en meses de calendario.
-- Segmenta en Inicio (0–25 %), En desarrollo (>25–50 %), Avanzado (>50–75 %), Tramo final (>75–<100 %) y Plazo cumplido (≥100 %). Conserva porcentajes superiores a 100 %; datos inválidos quedan sin porcentaje y con una incidencia explícita.
+- Segmenta en Inicio (0–25 %), En desarrollo (>25–50 %), Avanzado (>50–75 %), Tramo final (>75–<100 %) y Plazo cumplido (100 %). El valor guardado tiene máximo de 100 %; datos inválidos quedan sin porcentaje y con una incidencia explícita.
 - Mantiene los subperfiles de Riesgo por CIFIN 776 y de Vehículo por carrocería, junto con las reglas de Protección, Prepago y cuota inicial.
 
 El indicador mide tiempo contractual, no capital ni cuotas pagadas; «Plazo cumplido» no acredita cancelación, mora o prepago. Las fechas de desembolso admiten ISO o día/mes/año, sin inferir seriales de Excel.
 
-Supera **109 pruebas automatizadas**, incluidas 10.920 combinaciones de regresión de Riesgo, entradas con 24 o 26 derivadas, columnas parciales y encabezados equivalentes, comparación de las salidas anteriores, fronteras temporales, fin de mes y bisiestos, repetición del script, respaldo con WAL y rollback durante la actualización. La distribución final requiere ejecutar esta versión sobre la base original.
+Supera **111 pruebas automatizadas**, incluidas 10.920 combinaciones de regresión de Riesgo, entradas con 24 o 26 derivadas, columnas parciales y encabezados equivalentes, comparación de las salidas anteriores, fronteras temporales y tope de 100 %, fin de mes y bisiestos, repetición del script, respaldo con WAL y rollback durante la actualización. La distribución final requiere ejecutar esta versión sobre la base original.
 
 ## Contenido del paquete
 
